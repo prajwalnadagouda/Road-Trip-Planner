@@ -1,0 +1,32 @@
+version: '2.2'
+
+services:
+  app:
+    build: ./app
+    links:
+    - "db"
+    networks:
+    - roadtrip
+    ports:
+    - 9090:5000
+    volumes:
+    - ./info.ini:/app/info.ini
+
+  db:
+    image: mysql:8.0
+    ports:
+    - "33000:3306"
+    networks:
+    - roadtrip
+    environment:
+        MYSQL_ROOT_PASSWORD: password123
+    volumes:
+        - ./db:/docker-entrypoint-initdb.d/:ro
+
+networks:
+  roadtrip:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.70.0.0/16
+      driver: default
