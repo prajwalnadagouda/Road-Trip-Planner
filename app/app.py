@@ -2,6 +2,7 @@ import database
 import display
 from flask import Flask, render_template
 from fuelstations import fetch_fuelstations
+import time, threading
 
 app = Flask(__name__)
 
@@ -9,15 +10,14 @@ app = Flask(__name__)
 def hello():
     return 'This Compose/Flask demo has been viewed time(s)'
 
-@app.route('/updatedatabase')
+# @app.route('/updatedatabase')
 def update_database():
-    return database.database.update_database()
-    return render_template('hello.html')
+    print("i am here")
+    threading.Timer(3600, database.database.update_database).start()
 
 @app.route('/display')
 def connect_server():
     return display.display()
-
     return render_template('hello.html', name = "Connected")
 
 
@@ -27,4 +27,5 @@ def fetch_fuelstation():
 
 
 if __name__ == "__main__":
+    update_database()
     app.run(host="0.0.0.0", debug=True)

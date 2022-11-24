@@ -7,6 +7,8 @@ services:
     - "db"
     networks:
     - roadtrip
+    environment:
+    - PYTHONUNBUFFERED=1
     ports:
     - 9090:5000
     volumes:
