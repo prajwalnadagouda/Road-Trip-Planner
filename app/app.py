@@ -1,5 +1,5 @@
 import database
-import display
+import getevents
 from flask import Flask, render_template
 from fuelstations import fetch_fuelstations
 import time, threading
@@ -13,11 +13,12 @@ def hello():
 # @app.route('/updatedatabase')
 def update_database():
     print("i am here")
+    database.database.update_database()
     threading.Timer(3600, database.database.update_database).start()
 
-@app.route('/display')
-def connect_server():
-    return display.display()
+@app.route('/getevents')
+def get_events():
+    return getevents.display()
     return render_template('hello.html', name = "Connected")
 
 
