@@ -19,5 +19,4 @@ def display():
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM events")
     myresult = mycursor.fetchall()
-    
     return jsonify(myresult)

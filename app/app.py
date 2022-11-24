@@ -1,5 +1,6 @@
+import time, threading
 import database
-import display
+import getevents
 from flask import Flask, render_template
 from fuelstations import fetch_fuelstations
 from parks import fetch_parks
@@ -10,15 +11,21 @@ app = Flask(__name__)
 def hello():
     return 'This Compose/Flask demo has been viewed time(s)'
 
-@app.route('/updatedatabase')
+# @app.route('/updatedatabase')
 def update_database():
-    return database.database.update_database()
-    return render_template('hello.html')
+    print("i am here")
+    database.database.update_database()
+    threading.Timer(3600, database.database.update_database).start()
 
-@app.route('/display')
-def connect_server():
-    return display.display()
+@app.route('/getevents')
+def get_events():
+    return getevents.display()
+    database.database.update_database()
+    threading.Timer(3600, database.database.update_database).start()
 
+@app.route('/getevents')
+def get_events():
+    return getevents.display()
     return render_template('hello.html', name = "Connected")
 
 
@@ -26,11 +33,11 @@ def connect_server():
 def fetch_fuelstation():
     return fetch_fuelstations(self='')
 
-
 @app.route('/parks')
 def get_parks():
     return fetch_parks()
 
 
 if __name__ == "__main__":
+    update_database() 
     app.run(host="0.0.0.0", debug=True)
