@@ -2,6 +2,7 @@ import database
 import display
 from flask import Flask, render_template
 from fuelstations import fetch_fuelstations
+from parks import fetch_parks
 
 app = Flask(__name__)
 
@@ -24,6 +25,11 @@ def connect_server():
 @app.route('/fuelstations')
 def fetch_fuelstation():
     return fetch_fuelstations(self='')
+
+
+@app.route('/parks')
+def get_parks():
+    return fetch_parks()
 
 
 if __name__ == "__main__":
