@@ -14,6 +14,7 @@ def hello():
 def update_database():
     print("i am here")
 <<<<<<< HEAD
+<<<<<<< HEAD
     database.database.update_database()
     threading.Timer(3600, database.database.update_database).start()
 
@@ -27,6 +28,14 @@ def get_events():
 def connect_server():
     return display.display()
 >>>>>>> 41a5675 (database autoupdate)
+=======
+    database.database.update_database()
+    threading.Timer(3600, database.database.update_database).start()
+
+@app.route('/getevents')
+def get_events():
+    return getevents.display()
+>>>>>>> 07e32c6 (updates)
     return render_template('hello.html', name = "Connected")
 
 
