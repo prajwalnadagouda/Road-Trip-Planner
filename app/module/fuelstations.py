@@ -12,8 +12,9 @@ def fetch_fuelstations(self):
         + "fuel_type=all&status_code=E&access_code=public&restricted_access=false&state=CA&api_key="
         + api_key)
 
-    fuelstations = json.loads(response.text)['fuel_stations']\
+    fuelstations = json.loads(response.text)['fuel_stations']
 
+    # DB Connection
     connection = mc.connect(
             host=str("db"),
             user=str("root"),
