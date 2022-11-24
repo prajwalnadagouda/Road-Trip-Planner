@@ -1,8 +1,9 @@
+import time, threading
 import database
 import getevents
 from flask import Flask, render_template
 from fuelstations import fetch_fuelstations
-import time, threading
+from parks import fetch_parks
 
 app = Flask(__name__)
 
@@ -13,29 +14,18 @@ def hello():
 # @app.route('/updatedatabase')
 def update_database():
     print("i am here")
-<<<<<<< HEAD
-<<<<<<< HEAD
     database.database.update_database()
     threading.Timer(3600, database.database.update_database).start()
 
 @app.route('/getevents')
 def get_events():
     return getevents.display()
-=======
-    threading.Timer(3600, database.database.update_database).start()
-
-@app.route('/display')
-def connect_server():
-    return display.display()
->>>>>>> 41a5675 (database autoupdate)
-=======
     database.database.update_database()
     threading.Timer(3600, database.database.update_database).start()
 
 @app.route('/getevents')
 def get_events():
     return getevents.display()
->>>>>>> 07e32c6 (updates)
     return render_template('hello.html', name = "Connected")
 
 
@@ -43,7 +33,11 @@ def get_events():
 def fetch_fuelstation():
     return fetch_fuelstations(self='')
 
+@app.route('/parks')
+def get_parks():
+    return fetch_parks()
+
 
 if __name__ == "__main__":
-    update_database()
+    update_database() 
     app.run(host="0.0.0.0", debug=True)
