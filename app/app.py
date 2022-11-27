@@ -1,7 +1,7 @@
 import time, threading
 import database
 import getevents
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from fuelstations import fetch_fuelstations
 from parks import fetch_parks
 from amusementparks import fetch_amusement_parks
@@ -24,9 +24,14 @@ def update_database():
     threading.Timer(3600, database.database.update_database).start()
 
 
-@app.route('/getevents')
+@app.route('/getevents',methods=['GET'])
 def get_events():
-    return getevents.display()
+    if request.method == 'GET':
+        l1 = request.args.get('l1')
+        l2 = request.args.get('l2')
+        l3 = request.args.get('l3')
+        l4 = request.args.get('l4')
+        return getevents.display(l1,l2,l3,l4)
     return render_template('hello.html', name = "Connected")
 
 

@@ -23,6 +23,7 @@ class database:
         mycursor = mydb.cursor(buffered=True)
         for event in events:
             event_id = event['id']
+            event_performer = event["performers"][0]["name"]
             event_type = event["performers"][0]["taxonomies"][0]["name"]
             event_date = event['datetime_utc']
             event_date = datetime.strptime(event_date,'%Y-%m-%dT%H:%M:%S')
@@ -33,7 +34,7 @@ class database:
             event_lowest_price = event['stats']['lowest_price']
             # print(event_id, event_date, event_venue, event_lat ,event_lon, event_lowest_price, event_highest_price)
             try:
-                mycursor.execute("insert into events VALUES (%s,%s, %s, %s,%s,%s,%s,%s)",(event_id, event_date, event_type, event_venue, event_lat ,event_lon, event_lowest_price, event_highest_price))
+                mycursor.execute("insert into events VALUES (%s,%s, %s, %s, %s,%s,%s,%s,%s)",(event_id, event_date, event_performer, event_type, event_venue, event_lat ,event_lon, event_lowest_price, event_highest_price))
             except:
                 pass
         mydb.commit()

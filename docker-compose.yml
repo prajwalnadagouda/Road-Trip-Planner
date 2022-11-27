@@ -11,6 +11,8 @@ services:
     - PYTHONUNBUFFERED=1
     ports:
     - 9090:5000
+    depends_on:
+    - "db"
     volumes:
     - ./info.ini:/app/info.ini
 
