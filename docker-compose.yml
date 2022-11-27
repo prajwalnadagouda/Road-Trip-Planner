@@ -11,8 +11,19 @@ services:
     - PYTHONUNBUFFERED=1
     ports:
     - 9090:5000
+    depends_on:
+    - "db"
+    restart: always
     volumes:
     - ./info.ini:/app/info.ini
+    deploy:
+      resources:
+          limits:
+            cpus: "0.40"
+            memory: 400M
+          reservations:
+            cpus: "0.25"
+            memory: 128M
 
   db:
     image: mysql:8.0
@@ -24,6 +35,14 @@ services:
         MYSQL_ROOT_PASSWORD: password123
     volumes:
         - ./db:/docker-entrypoint-initdb.d/:ro
+    deploy:
+      resources:
+          limits:
+            cpus: "0.40"
+            memory: 400M
+          reservations:
+            cpus: "0.25"
+            memory: 128M
 
 networks:
   roadtrip:

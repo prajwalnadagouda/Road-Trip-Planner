@@ -6,7 +6,6 @@ import mysql.connector as mc
 
 
 def fetch_amusement_parks():
-
     response = requests.get("https://queue-times.com/en-US/parks.json")
     data = json.loads(response.text)
     # Filter amusement parks with country as United States and timezone as America/Los_Angeles
@@ -35,7 +34,7 @@ def fetch_amusement_parks():
                 cursor.execute("insert into amusement_parks VALUES (%s,%s,%s,%s)",
                                (id, name, latitude, longitude))
             except mc.Error as err:
-                print("Something went wrong: {}".format(err))
+                pass
             # Commit, close cursor and connection
         connection.commit()
         cursor.close()

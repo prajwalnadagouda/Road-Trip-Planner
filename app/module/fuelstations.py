@@ -40,11 +40,10 @@ def fetch_fuelstations(self):
             zip = fuelstation["zip"]
             try:
                 # id, fuel_type_code, station_name, latitude, longitude, facility_type, access_days_time, city, street_address, zip
-
                 cursor.execute("insert into fuelstations VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                     (id, fuel_type_code, station_name, latitude, longitude, facility_type, access_days_time, city, street_address, zip))
             except mc.Error as err:
-                print("Something went wrong: {}".format(err))
+                pass
         # Commit, close cursor and connection
         connection.commit()
         cursor.close()

@@ -6,7 +6,11 @@ user= "root"#parser.get('dblogin_detail', 'username')
 password= "password123"#parser.get('dblogin_detail', 'password')
 database= "travel" #parser.get('dblogin_detail', 'database')
 host= "db" #parser.get('dblogin_detail', 'host')
-def display():
+def display(l1,l2,l3,l4):
+    l1= float(l1)
+    l2= float(l2)
+    l3= float(l3)
+    l4= float(l4)
     try:
         mydb = mc.connect(host="db", user="root", passwd="password123", database="travel")
     except mysql.connector.Error as err:
@@ -17,6 +21,6 @@ def display():
         else:
             return(str(err))
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM events")
+    mycursor.execute("SELECT * FROM events WHERE latitude > %s AND latitude < %s AND longitude > %s AND longitude < %s",(l1,l2,l3,l4))
     myresult = mycursor.fetchall()
     return jsonify(myresult)
