@@ -5,11 +5,13 @@ from flask import Flask, render_template
 from fuelstations import fetch_fuelstations
 from parks import fetch_parks
 from amusementparks import fetch_amusement_parks
+from flask_cors import CORS
 from museums import fetch_museums
 from restaurants import fetch_restaurants
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def hello():

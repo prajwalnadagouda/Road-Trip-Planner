@@ -12,7 +12,7 @@ class database:
         password= "password123"
         database= "travel"
         host= "db"
-        events = requests.get('https://api.seatgeek.com/2/events?per_page=1000&venue.state=CA&client_id=MzAxNTQ4MTV8MTY2NzY4MzY2Ni41NjMyMjg4')
+        events = requests.get('https://api.seatgeek.com/2/events?per_page=50&venue.state=CA&client_id=MzAxNTQ4MTV8MTY2NzY4MzY2Ni41NjMyMjg4')
         events= json.loads(events.text)['events']
         mydb = mc.connect(
         host=str(host),
