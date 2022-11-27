@@ -17,11 +17,6 @@ def update_database():
     database.database.update_database()
     threading.Timer(3600, database.database.update_database).start()
 
-@app.route('/getevents')
-def get_events():
-    return getevents.display()
-    database.database.update_database()
-    threading.Timer(3600, database.database.update_database).start()
 
 @app.route('/getevents')
 def get_events():
