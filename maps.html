@@ -93,7 +93,7 @@
             if(long1>long2){ [long1,long2]=[long2,long1] }
             extra="l1="+lat1+"&l2="+lat2+"&l3="+long1+"&l4="+long2;
             const xhr = new XMLHttpRequest();
-            const url = 'http://34.211.111.37/getevents?'+extra;
+            const url = 'http://localhost:9090/getevents?'+extra;
             console.log(url)
             xhr.responseType = 'json';
             xhr.onreadystatechange = () => {
