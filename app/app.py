@@ -3,6 +3,7 @@ import display
 from flask import Flask, render_template
 from fuelstations import fetch_fuelstations
 from parks import fetch_parks
+from amusementparks import fetch_amusement_parks
 
 app = Flask(__name__)
 
@@ -30,6 +31,11 @@ def fetch_fuelstation():
 @app.route('/parks')
 def get_parks():
     return fetch_parks()
+
+
+@app.route('/amusementparks')
+def get_amusement_parks():
+    return fetch_amusement_parks()
 
 
 if __name__ == "__main__":
