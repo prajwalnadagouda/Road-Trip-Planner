@@ -4,6 +4,8 @@ from flask import Flask, render_template
 from fuelstations import fetch_fuelstations
 from parks import fetch_parks
 from amusementparks import fetch_amusement_parks
+from museums import fetch_museums
+
 
 app = Flask(__name__)
 
@@ -36,6 +38,11 @@ def get_parks():
 @app.route('/amusementparks')
 def get_amusement_parks():
     return fetch_amusement_parks()
+
+
+@app.route('/museums')
+def get_museums():
+    return fetch_museums()
 
 
 if __name__ == "__main__":
