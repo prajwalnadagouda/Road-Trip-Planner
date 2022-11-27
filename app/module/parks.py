@@ -13,8 +13,7 @@ def fetch_parks():
 
     # DB Connection
     connection = mc.connect(
-        host=str("127.0.0.1"),
-        port=33000,
+        host=str("db"),
         user=str("root"),
         passwd=str("password123"),
         database=str("travel")
@@ -46,7 +45,7 @@ def fetch_parks():
                 cursor.execute("insert into parks VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                                (id, park_code, name, latitude, longitude, description, city, street_address, zip))
             except mc.Error as err:
-                print("Something went wrong: {}".format(err))
+                pass
             # Commit, close cursor and connection
         connection.commit()
         cursor.close()

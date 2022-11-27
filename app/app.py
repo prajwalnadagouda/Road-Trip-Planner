@@ -61,5 +61,8 @@ def get_restaurants():
 
 
 if __name__ == "__main__":
-    update_database() 
+    update_database()
+    fetch_fuelstations(self='')
+    fetch_parks()
+    fetch_amusement_parks()
     app.run(host="0.0.0.0", debug=True)
