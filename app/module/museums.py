@@ -1,7 +1,8 @@
 import mysql.connector as mc
 import pandas as pd
 
-# Data source: museums_ca.csv
+# Data source: https://www.kaggle.com/datasets/imls/museum-directory?resource=download
+# museums_ca.csv
 
 def fetch_museums():
 
@@ -11,8 +12,7 @@ def fetch_museums():
 
     # DB Connection
     connection = mc.connect(
-        host=str("127.0.0.1"),
-        port=33000,
+        host=str("db"),
         user=str("root"),
         passwd=str("password123"),
         database=str("travel")
@@ -37,7 +37,7 @@ def fetch_museums():
 
                 # id, name, type, latitude, longitude, street_address, city, zip
                 cursor.execute("insert into museums VALUES (%s,%s,%s,%s,%s,%s,%s,%s)",
-                              (id, name, type, latitude, longitude, street_address, city, zip))
+                              (id, name, type, latitude, longitude, city, street_address, zip))
             except mc.Error as err:
                 print
                 print("Something went wrong: {}".format(err))

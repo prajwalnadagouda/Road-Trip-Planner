@@ -5,6 +5,7 @@ from fuelstations import fetch_fuelstations
 from parks import fetch_parks
 from amusementparks import fetch_amusement_parks
 from museums import fetch_museums
+from restaurants import fetch_restaurants
 
 
 app = Flask(__name__)
@@ -43,6 +44,12 @@ def get_amusement_parks():
 @app.route('/museums')
 def get_museums():
     return fetch_museums()
+
+
+@app.route('/restaurants')
+def get_restaurants():
+    return fetch_restaurants()
+
 
 
 if __name__ == "__main__":

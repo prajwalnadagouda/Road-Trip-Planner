@@ -14,8 +14,7 @@ def fetch_amusement_parks():
     #print(amusement_parks)
     # DB Connection
     connection = mc.connect(
-        host=str("127.0.0.1"),
-        port=33000,
+        host=str("db"),
         user=str("root"),
         passwd=str("password123"),
         database=str("travel")

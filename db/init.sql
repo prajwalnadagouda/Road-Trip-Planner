@@ -11,3 +11,5 @@ CREATE TABLE parks(id VARCHAR(40) PRIMARY KEY, park_code VARCHAR(30), name VARCH
 CREATE TABLE amusement_parks(id INT PRIMARY KEY, name VARCHAR(100), latitude FLOAT(10,6), longitude FLOAT(10,6));
 
 CREATE TABLE museums (id VARCHAR(40) PRIMARY KEY, name VARCHAR(100), type VARCHAR(100), latitude FLOAT(10,6), longitude FLOAT(10,6), city VARCHAR(100), street_address VARCHAR(100), zip VARCHAR(10));
+
+CREATE TABLE restaurants (id VARCHAR(40) PRIMARY KEY, name VARCHAR(100), category VARCHAR(100), latitude FLOAT(10,6), longitude FLOAT(10,6), city VARCHAR(100), street_address VARCHAR(100), zip VARCHAR(10));
