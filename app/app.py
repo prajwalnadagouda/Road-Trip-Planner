@@ -36,7 +36,8 @@ def get_events():
         l2 = request.args.get('l2')
         l3 = request.args.get('l3')
         l4 = request.args.get('l4')
-        return getevents.display(l1,l2,l3,l4)
+        jdate = request.args.get('date')
+        return getevents.display(l1,l2,l3,l4,jdate)
 
 @app.route('/getamusementparks',methods=['GET'])
 def rgetamusementparks():
