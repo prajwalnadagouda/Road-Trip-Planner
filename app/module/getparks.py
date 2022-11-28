@@ -6,7 +6,7 @@ user= "root"#parser.get('dblogin_detail', 'username')
 password= "password123"#parser.get('dblogin_detail', 'password')
 database= "travel" #parser.get('dblogin_detail', 'database')
 host= "db" #parser.get('dblogin_detail', 'host')
-def display(l1,l2,l3,l4,jdate):
+def display(l1,l2,l3,l4):
     l1= float(l1)
     l2= float(l2)
     l3= float(l3)
@@ -21,6 +21,6 @@ def display(l1,l2,l3,l4,jdate):
         else:
             return(str(err))
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM events WHERE latitude > %s AND latitude < %s AND longitude > %s AND longitude < %s AND event_date=%s",(l1,l2,l3,l4,str(jdate)))
+    mycursor.execute("SELECT name,latitude,longitude FROM parks WHERE latitude > %s AND latitude < %s AND longitude > %s AND longitude < %s LIMIT 10",(l1,l2,l3,l4))
     myresult = mycursor.fetchall()
     return jsonify(myresult)
