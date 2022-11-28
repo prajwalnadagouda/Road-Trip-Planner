@@ -89,7 +89,7 @@ async function myFunction() {
     if(long1>long2){ [long1,long2]=[long2,long1] }
     extra="l1="+lat1+"&l2="+lat2+"&l3="+long1+"&l4="+long2;
     const xhr = new XMLHttpRequest();
-    var url = 'http://localhost:9090/getevents?'+extra+"&date="+journeydate;
+    var url = 'http://3.80.152.179/getevents?'+extra+"&date="+journeydate;
     xhr.responseType = 'json';
     xhr.onreadystatechange = () => {
     if(xhr.readyState === XMLHttpRequest.DONE) {
@@ -115,15 +115,15 @@ async function myFunction() {
     xhr.open('GET',url);
     xhr.send();
 
-    var url = 'http://localhost:9090/getparks?'+extra;
+    var url = 'http://3.80.152.179/getparks?'+extra;
     callApi(url, './Images/park.png')
-    var url = 'http://localhost:9090/getamusementparks?'+extra;
+    var url = 'http://3.80.152.179/getamusementparks?'+extra;
     callApi(url, './Images/amusement.png')
-    var url = 'http://localhost:9090/getmuseums?'+extra;
+    var url = 'http://3.80.152.179/getmuseums?'+extra;
     callApi(url, './Images/museum.png')
-    var url = 'http://localhost:9090/getfuelstations?'+extra;
+    var url = 'http://3.80.152.179/getfuelstations?'+extra;
     callApi(url, './Images/fuel.png')
-    var url = 'http://localhost:9090/getrestaurants?'+extra;
+    var url = 'http://3.80.152.179/getrestaurants?'+extra;
     callApi(url, './Images/restaurant.png')
 
 
