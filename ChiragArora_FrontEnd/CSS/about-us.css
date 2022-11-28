@@ -601,3 +601,56 @@ section {
     font-size: 30px;
   }
 }
+
+#map{
+  width: 80%;
+  height: 85vh;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+form { 
+  margin-right: 10%;
+  margin-left: 10%;
+  width: 80%;
+  /* text-align: center; */
+  }
+
+.formdate {
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: #333;
+  width: 16rem;
+  padding: 12px !important;
+  border: 2px solid #fff;
+}
+.formsubmit {
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: #333;
+  width: 9rem;
+  padding: 12px !important;
+  border: 2px solid #fff;
+}
+select {
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: #333;
+  width: 16rem;
+  padding: 12px !important;
+  border: 2px solid #fff;
+}
+label {
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  width: 10rem;
+  padding: 12px !important;
+}

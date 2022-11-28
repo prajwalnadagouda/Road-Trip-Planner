@@ -14,6 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Montserrat&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <link  href="https://unpkg.com/leaflet-geosearch@latest/assets/css/leaflet.css" rel="stylesheet" />
   <!-- JS code -->
 </head>
 
@@ -33,9 +36,28 @@
     <div class="content">
       <h2>Explore The World</h2>
       <p>Share your love for travelling with our community at DestinationExplorer</p>
-      <a href="#about" class="btn">Learn More</a>
+      <a href="#planmap" class="btn">Learn More</a>
     </div>
   </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+  <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
+  <!-- <div id="formbox"> -->
+  <br id="planmap">
+  <form onsubmit="myFunction(); return false;">
+    <label>Start:</label>
+    <select id="startcity" name="city" required> <option value="">Select City</option> <option value="Anaheim">Anaheim</option> <option value="Bakersfield">Bakersfield</option> <option value="Chula Vista">Chula Vista</option> <option value="Fresno">Fresno</option> <option value="Irvine">Irvine</option> <option value="Long Beach">Long Beach</option> <option value="Los Angeles">Los Angeles</option> <option value="Oakland">Oakland</option> <option value="Riverside">Riverside</option> <option value="Sacramento">Sacramento</option> <option value="San Diego">San Diego</option> <option value="San Francisco">San Francisco</option> <option value="San Jose">San Jose</option> <option value="Santa Ana">Santa Ana</option> <option value="Stockton">Stockton</option> </select>
+    <label>Destination:</label>
+    <select id="endcity" name="city" required> <option value="">Select City</option> <option value="Anaheim">Anaheim</option> <option value="Bakersfield">Bakersfield</option> <option value="Chula Vista">Chula Vista</option> <option value="Fresno">Fresno</option> <option value="Irvine">Irvine</option> <option value="Long Beach">Long Beach</option> <option value="Los Angeles">Los Angeles</option> <option value="Oakland">Oakland</option> <option value="Riverside">Riverside</option> <option value="Sacramento">Sacramento</option> <option value="San Diego">San Diego</option> <option value="San Francisco">San Francisco</option> <option value="San Jose">San Jose</option> <option value="Santa Ana">Santa Ana</option> <option value="Stockton">Stockton</option> </select>
+    <label>Date:</label>
+    <input class="formdate"type="date" id="plandate" required>
+    &nbsp;
+    <input class="formsubmit" type="submit" value="Start">
+  </form>
+  <!-- </div> -->
+  <div id="map"></div>
+  <script src= "JS/map.js"></script>
 
   <section class="about" id="about">
     <div class="contentBx">
