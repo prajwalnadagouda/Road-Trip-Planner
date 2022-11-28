@@ -10,7 +10,7 @@ services:
     environment:
     - PYTHONUNBUFFERED=1
     ports:
-    - 9090:5000
+    - 80:5000
     depends_on:
     - "db"
     restart: always
@@ -31,6 +31,7 @@ services:
     - "33000:3306"
     networks:
     - roadtrip
+    command: --performance-schema=0
     environment:
         MYSQL_ROOT_PASSWORD: password123
     volumes:
@@ -39,7 +40,7 @@ services:
       resources:
           limits:
             cpus: "0.40"
-            memory: 400M
+            memory: 500M
           reservations:
             cpus: "0.25"
             memory: 128M
