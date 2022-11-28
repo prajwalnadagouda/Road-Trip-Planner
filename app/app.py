@@ -6,14 +6,14 @@ import getmuseums
 import getparks
 import getrestaurants
 import getfuelstations
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from fuelstations import fetch_fuelstations
 from parks import fetch_parks
 from amusementparks import fetch_amusement_parks
 from flask_cors import CORS
 from museums import fetch_museums
 from restaurants import fetch_restaurants
-
+from recommendations import fetch_recommendations
 
 app = Flask(__name__)
 CORS(app)
@@ -105,6 +105,16 @@ def rgetparks():
 # @app.route('/restaurants')
 # def get_restaurants():
 #     return fetch_restaurants()
+
+@app.route('/categories')
+def get_categories():
+    return jsonify(["Amusement Park", "National Park", "Concert", "Food", "Museum"])
+
+
+@app.route('/recommendations')
+def get_recommendations():
+    return fetch_recommendations()
+
 
 
 if __name__ == "__main__":
