@@ -101,6 +101,14 @@ session_start();
         dispFriendBox($sql, $conn, $mode);
         ?>
         <!-- ./friend requests -->
+        <h4>Top Recommendations for you</h4>
+        <?php
+        dbConnect();
+        $sql = "SELECT * FROM preferences where user_id = {$_SESSION['userid']} LIMIT 5";
+
+        require_once "disp-recommendation-box.php";
+        dispRecommendationBox($sql, $conn);
+        ?>
       </div>
       <div class="col-md-6">
         <!-- post form -->

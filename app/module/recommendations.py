@@ -12,11 +12,11 @@ def fetch_recommendations():
         # create cursor
         cursor = connection.cursor(buffered=True)
 
-        cursor.execute("select event_id, event_date, event_venue, event_lat, event_lon from events")
+        cursor.execute("select event_id, event_date, event_performer, event_type, event_venue, latitude, latitude from events")
         events = cursor.fetchall()
         #print(events[0])
         random_events = random.choices(events, k=3)
-        random_events = [dict(zip(("event_id", "event_date", "event_venue", "event_lat", "event_lon"), value)) for value in random_events]
+        random_events = [dict(zip(("event_id", "event_date", "event_performer", "event_type", "event_venue", "latitude", "latitude"), value)) for value in random_events]
         result["events"] = random_events
 
         cursor.execute("select id, name, latitude, longitude, city, street_address, zip from parks")
