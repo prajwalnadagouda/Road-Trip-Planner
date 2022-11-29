@@ -91,6 +91,42 @@
             </div>
           </div>
           <!-- /edit profile img -->
+          <!-- Preferences -->
+          <div class="panel panel-default">
+            <h4>Choose Preferences</h4>
+            <form action="#" method="post">
+                <input type="checkbox" name="check_list[]" value="parks"><label>Parks</label><br/>
+                <input type="checkbox" name="check_list[]" value="amusementparks"><label>Amusement Parks</label><br/>
+                <input type="checkbox" name="check_list[]" value="museums"><label>Museums</label><br/>
+                <input type="checkbox" name="check_list[]" value="restaurants"><label>Food</label><br/>
+                <input type="checkbox" name="check_list[]" value="events"><label>Events(Concerts/Theatre/Sports)</label><br/>
+                <input type="submit" name="preference" value="Update Preferences"/>
+            </form>
+            <?php if(isset($_POST['preference'])) {//to run PHP script on submit
+                if(!empty($_POST['check_list'])) {
+                    // Loop to store and display values of individual checked checkbox.
+                    require_once "functions.php";
+                    dbConnect();
+                    $sql = "DELETE FROM preferences WHERE user_id = ?";
+                    $statement = $conn->prepare($sql);
+                    $statement->bind_param('i', $_SESSION['userid']);
+                    if($statement->execute()) {
+                        foreach($_POST['check_list'] as $selected){
+                            $sql = "INSERT INTO preferences (user_id, preference) VALUES (?, ?)";
+                            $statement = $conn->prepare($sql);
+                            $statement->bind_param('is', $_SESSION['userid'], $selected);
+                            $statement->execute();
+                        }
+                        echo "Updated preferences.";
+                    } else {
+                        echo "Error: ".$conn->error;
+                    }
+                } else {
+                    echo "Please select atleast 1 preference.";
+                }
+            } ?>
+          </div>
+          <!-- /Preferences-->
         </div>
       <?php
       }
