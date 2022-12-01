@@ -5,7 +5,7 @@
 
         if ($result && $result->num_rows > 0) {
 
-        $curl = curl_init('http://localhost:9090/recommendations');
+        $curl = curl_init('http://3.80.152.179/recommendations');
         $options = array(
             CURLOPT_RETURNTRANSFER => true,   // return web page
             CURLOPT_HEADER         => false,  // don't return headers
